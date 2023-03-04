@@ -54,18 +54,18 @@ async function start() {
 
     organizar()
 
-    function organizar () {
-        let answer = readline.question(chalk.yellow(`¿Quieres organizar ${files.length + 1} archivos? (Si/No): `)).toLocaleLowerCase()
+    function organizar() {
+        let answer = readline.question(chalk.yellow(`¿Quieres organizar ${files.length} archivos? (Si/No): `)).toLocaleLowerCase()
         switch (answer) {
             case "no":
                 console.log(chalk.bgYellow("Regresando..."))
                 inicialQuestion()
                 break;
-    
+
             case "si":
                 console.log(chalk.bgGreen("Organizando archivos..."))
                 break;
-    
+
             default:
                 console.log(chalk.bgRed("Regresando..."))
                 organizar()
@@ -82,11 +82,15 @@ async function start() {
         await move()
         await unlink()
         async function unlink() {
-            console.log(chalk.bgGreen("(MOVIDO)   ->") + " " + chalk.bgGreen("Archivo " + File.all + " movido con exito."))
+            console.log(chalk.bgYellow("(MOVIDO)   ->") + " " + chalk.bgGreen("Archivo " + File.all + " movido con exito."))
             await fs.unlinkSync(`${inicialDir}/${File.all}`)
         }
-        async function move () {
-            await fs.cpSync(`${inicialDir}/${File.all}`, `${lastDir}/${File.type.toUpperCase()}/${File.all}`)
+        async function move() {
+            try {
+                await fs.cpSync(`${inicialDir}/${File.all}`, `${lastDir}/${File.type.toUpperCase()}/${File.all}`)
+            } catch (e) {
+                return console.log(chalk.bgYellow("(ERROR)     ->") + " " + chalk.bgRed("Hubo un error al mover el archivo " + File.all + "."))
+            }
         }
     }
 
