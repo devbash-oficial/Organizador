@@ -1,1 +1,1 @@
-npm run start
+npm install && node index.js
