@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
+  "author": "AlexK-sh, TutoMineYT",
   "license": "ISC",
   "dependencies": {
     "chalk": "^3.0.0",
