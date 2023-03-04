@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "build": "npm i && npm run start"
   },
   "author": "Devbash",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^3.0.0",
-    "fs": "^0.0.2",
-    "readline-sync": "^1.4.10"
+    "chalk": "3.0.0",
+    "fs": "0.0.1-security",
+    "readline-sync": "1.4.10"
   }
 }
