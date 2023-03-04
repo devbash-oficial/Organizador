@@ -11,7 +11,8 @@ console.log(chalk.red("|                                                        
 console.log(chalk.red("|                                                                 |"))
 console.log(chalk.red("|                                                                 |"))
 console.log(chalk.red("|                       ") + chalk.bgBlue("  AUTO-ORGANIZER  ") + chalk.red("                        |"))
-console.log(chalk.red("|                       ") + chalk.bgCyan("Hecho por TutoMine") + chalk.red("                        |"))
+console.log(chalk.red("|                   ") + chalk.bgCyan("Hecho por TutoMine Y AlexK") + chalk.red("                    |"))
+console.log(chalk.red("|                                                                 |"))
 console.log(chalk.red("|                                                                 |"))
 console.log(chalk.red("|                                                                 |"))
 console.log(chalk.red("==================================================================="))
@@ -20,7 +21,7 @@ console.log("")
 inicialQuestion()
 
 function inicialQuestion() {
-    inicialDir = readline.question("¿Que carpeta quieres que se organize?: ").replaceAll("\\", "/")
+    inicialDir = readline.question(chalk.yellow("¿Que carpeta quieres que se organize?: ")).replaceAll("\\", "/")
     if (!fs.existsSync(inicialDir) || !fs.statSync(inicialDir).isDirectory()) {
         console.log(chalk.bgRed("Carpeta no valida."))
         inicialQuestion()
@@ -28,7 +29,7 @@ function inicialQuestion() {
     lastQuestion()
 }
 function lastQuestion() {
-    lastDir = (readline.question("¿En donde quieres que se guarden los archivos organizados?: ")).replaceAll("\\", "/")
+    lastDir = (readline.question(chalk.yellow("¿En donde quieres que se guarden los archivos organizados?: "))).replaceAll("\\", "/")
     if (!fs.existsSync(lastDir) || !fs.statSync(lastDir).isDirectory()) {
         console.log(chalk.bgRed("Carpeta no valida."))
         inicialQuestion()
@@ -54,7 +55,7 @@ async function start() {
     organizar()
 
     function organizar () {
-        let answer = readline.question(`¿Quieres organizar ${files.length + 1} archivos? (Si/No): `).toLocaleLowerCase()
+        let answer = readline.question(chalk.yellow(`¿Quieres organizar ${files.length + 1} archivos? (Si/No): `)).toLocaleLowerCase()
         switch (answer) {
             case "no":
                 console.log(chalk.bgYellow("Regresando..."))
@@ -94,7 +95,7 @@ async function start() {
 
 function closeQuestion() {
     console.log(chalk.bgYellow("(MOVIDOS)  ->") + " " + chalk.bgGreen("Todos los archivos movidos con exito."))
-    let answer = readline.question("¿Quieres repetir este proceso? (Si/No): ")
+    let answer = readline.question(chalk.yellow("¿Quieres repetir este proceso? (Si/No): "))
     answer = answer.toLowerCase()
     switch (answer) {
         case "no":
