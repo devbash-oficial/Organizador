@@ -6,6 +6,7 @@ let inicialDir = undefined
 let lastDir = undefined
 let terminado = false
 
+console.clear()
 console.log(chalk.red("==================================================================="))
 console.log(chalk.red("|                                                                 |"))
 console.log(chalk.red("|                                                                 |"))
