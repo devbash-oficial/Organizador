@@ -45,9 +45,7 @@ async function start() {
     let files = []
     // escanear y buscar los archivos
     await fs.readdirSync(inicialDir).forEach(async file => {
-        if (await fs.statSync(`${inicialDir}/${file}`).isDirectory()) {
-            return console.log(chalk.bgBlue(`${file} es una Carpeta`))
-        }
+        if (await fs.statSync(`${inicialDir}/${file}`).isDirectory()) return;
         let name = file.split(`.`)
         let fileType = name[name.length - 1]
         await files.push({ type: fileType, name: name[0], all: file })
